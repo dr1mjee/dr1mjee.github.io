@@ -46,59 +46,48 @@ body{background:#E6EDEF}
 
 <div style="height: 100vh; min-height: 860px; background: linear-gradient(165deg, #D9E8E6 0%, #E6EDEF 40%, #F1F2F3 100%); padding: 20px 28px 28px; box-sizing: border-box; font-family: Inter, -apple-system, sans-serif; color: #111111; font-variant-numeric: tabular-nums; display: flex; flex-direction: column; gap: 16px">
 
-<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: none; width: 100%; margin: 0 auto; height: 52px">
-<button type="button" onClick="{{goHome}}" style="border: 0; background: transparent; padding: 0 4px; font: 700 22px Inter, sans-serif; letter-spacing: -0.03em; color: #111111; cursor: pointer">Maomao School</button>
-<a href="/class/" class="login" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 22px; background: #FFFFFF; color: #111111; font-size: 14px; font-weight: 600; box-shadow: 0 4px 14px -8px rgba(0,0,0,.25)">Войти в кабинет</a>
+<header style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; width: 100%; height: 52px">
+<button type="button" onClick="{{goHome}}" style="justify-self: start; border: 0; background: transparent; padding: 0 4px; font: 700 22px Inter, sans-serif; letter-spacing: -0.03em; color: #111111; cursor: pointer">Maomao School</button>
+<nav class="topnav" style="display: flex; gap: 4px; padding: 4px; border-radius: 24px; background: rgba(255,255,255,.55)">
+<sc-for list="{{menu}}" as="m" hint-placeholder-count="4"><button type="button" class="mi" onClick="{{m.pick}}" style="height: 40px; padding: 0 18px; border: 0; border-radius: 20px; background: {{m.bg}}; color: {{m.fg}}; box-shadow: {{m.sh}}; font: 500 14px Inter, sans-serif; cursor: pointer">{{m.name}}</button></sc-for>
+</nav>
+<a href="/class/" class="login" style="justify-self: end; display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 22px; background: #FFFFFF; color: #111111; font-size: 14px; font-weight: 600; box-shadow: 0 4px 14px -8px rgba(0,0,0,.25)">Войти в кабинет</a>
 </header>
 
-<main style="flex: 1; max-width: none; width: 100%; margin: 0 auto; background: #FFFFFF; border-radius: 28px; padding: 36px 36px 32px; box-sizing: border-box; display: flex; flex-direction: column; box-shadow: 0 30px 80px -50px rgba(0,0,0,.35)">
+<main style="flex: 1; width: 100%; background: #FFFFFF; border-radius: 28px; padding: 36px 36px 32px; box-sizing: border-box; display: flex; flex-direction: column; box-shadow: 0 30px 80px -50px rgba(0,0,0,.35); min-height: 0">
 
 <sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
 <div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 32px">
-<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px 0 28px">
-<h1 style="margin: 0; font-size: 64px; line-height: 1.04; letter-spacing: -0.04em; font-weight: 600">Учим китайскому.<br>Помогаем поступить.</h1>
-<p style="margin: 24px 0 0; max-width: 560px; font-size: 18px; line-height: 1.5; color: #55595D">Онлайн-школа китайского языка и сопровождение поступления в университеты Китая и Тайваня.</p>
-<a class="cta" href="https://t.me/jesuscurse" target="_blank" rel="noopener" style="margin-top: 36px; display: inline-flex; align-items: center; height: 54px; padding: 0 32px; border-radius: 27px; background: #111111; color: #FFFFFF; font: 600 15px Inter, sans-serif">Записаться на консультацию</a>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px 0 20px">
+<h1 style="margin: 0; font-size: 68px; line-height: 1.03; letter-spacing: -0.045em; font-weight: 600">Не только китайский.<br>Ваше будущее в Азии.</h1>
+<p style="margin: 26px 0 0; max-width: 620px; font-size: 19px; line-height: 1.5; color: #55595D">Специализируемся на китайском для поступления: готовим к HSK и TOCFL и ведём до зачисления в университеты Китая и Тайваня.</p>
+<a class="cta" href="https://t.me/jesuscurse" target="_blank" rel="noopener" style="margin-top: 34px; display: inline-flex; align-items: center; height: 54px; padding: 0 32px; border-radius: 27px; background: #111111; color: #FFFFFF; font: 600 15px Inter, sans-serif">Записаться на консультацию</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
-<button type="button" class="card" onClick="{{goAdm}}" style="border: 0; cursor: pointer; text-align: left; background: #E7E2FB; border-radius: 24px; padding: 30px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; font-family: Inter, sans-serif; color: #111111">
-<span><span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 14px; background: #FFFFFF; font-size: 13px; font-weight: 500">Китай · Тайвань</span><b style="display: block; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; margin-top: 18px">Поступление</b><span style="display: block; font-size: 15px; color: #45454A; margin-top: 6px">От консультации до личного сопровождения</span></span>
-<span style="display: flex; justify-content: space-between; align-items: center; width: 100%"><span style="font-size: 17px; font-weight: 600">от 30 000 ₽</span><span class="ar" style="width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="3">
+<button type="button" class="card" onClick="{{t.go}}" style="border: 0; cursor: pointer; text-align: left; background: {{t.bg}}; border-radius: 24px; padding: 30px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; color: #111111; font-family: Inter, sans-serif">
+<span style="display: flex; flex-direction: column; gap: 8px"><b style="font-size: 34px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1">{{t.name}}</b><span style="font-size: 16px; line-height: 1.45; color: #45454A; max-width: 340px">{{t.sub}}</span></span>
+<span style="display: flex; justify-content: space-between; align-items: center; width: 100%"><span style="font-size: 18px; font-weight: 600">{{t.price}}</span><span class="ar" style="width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
 </button>
-<button type="button" class="card" onClick="{{goLearn}}" style="border: 0; cursor: pointer; text-align: left; background: #D8F3E2; border-radius: 24px; padding: 30px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; font-family: Inter, sans-serif; color: #111111">
-<span><span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 14px; background: #FFFFFF; font-size: 13px; font-weight: 500">Онлайн · индивидуально</span><b style="display: block; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; margin-top: 18px">Обучение</b><span style="display: block; font-size: 15px; color: #45454A; margin-top: 6px">Уроки китайского с нуля до HSK 6</span></span>
-<span style="display: flex; justify-content: space-between; align-items: center; width: 100%"><span style="font-size: 17px; font-weight: 600">от 1 850 ₽ за урок</span><span class="ar" style="width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-</button>
-<button type="button" class="card" onClick="{{goFaq}}" style="border: 0; cursor: pointer; text-align: left; background: #FCE9CC; border-radius: 24px; padding: 30px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; font-family: Inter, sans-serif; color: #111111">
-<span><span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 14px; background: #FFFFFF; font-size: 13px; font-weight: 500">Сроки · стипендии · уроки</span><b style="display: block; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; margin-top: 18px">Вопросы</b><span style="display: block; font-size: 15px; color: #45454A; margin-top: 6px">Ответы на то, что спрашивают чаще всего</span></span>
-<span style="display: flex; justify-content: space-between; align-items: center; width: 100%"><span></span><span class="ar" style="width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-</button>
+</sc-for>
 </div>
 </div>
 </sc-if>
 
 <sc-if value="{{isAdm}}" hint-placeholder-val="{{ false }}">
-<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
-<button type="button" onClick="{{goHome}}" aria-label="На главную" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-<h1 style="margin: 0 12px 0 0; font-size: 34px; font-weight: 600; letter-spacing: -0.02em">Поступление</h1>
-<sc-for list="{{countries}}" as="c" hint-placeholder-count="2">
-<button type="button" class="{{c.cls}}" onClick="{{c.pick}}" style="display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border: 0; border-radius: 18px; font: 500 14px Inter, sans-serif; cursor: pointer; background: {{c.bg}}; color: {{c.fg}}"><sc-if value="{{c.on}}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#FFFFFF"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if>{{c.name}}</button>
-</sc-for>
-<span style="margin-left: auto; font-size: 15px; color: #6B6B70">Языковые курсы, бакалавриат, магистратура</span>
-</div>
+<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap"><button type="button" onClick="{{goHome}}" aria-label="На главную" class="back" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div style="display: flex; flex-direction: column; gap: 2px"><h1 style="margin: 0; font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em">Поступление</h1><span style="font-size: 15px; color: #6B6B70">Языковые курсы, бакалавриат и магистратура</span></div><div style="margin-left: auto; display: flex; gap: 6px"><sc-for list="{{countries}}" as="c" hint-placeholder-count="2"><button type="button" class="{{c.cls}}" onClick="{{c.pick}}" style="height: 38px; padding: 0 18px; border: 0; border-radius: 19px; font: 500 14px Inter, sans-serif; background: {{c.bg}}; color: {{c.fg}}; cursor: pointer">{{c.name}}</button></sc-for></div></div>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; flex: 1">
 <sc-for list="{{admission}}" as="p" hint-placeholder-count="3">
-<div style="background: {{p.bg}}; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; box-sizing: border-box">
-<span style="align-self: flex-start; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 14px; background: #FFFFFF; font-size: 13px; font-weight: 500">{{p.tag}}</span>
-<b style="font-size: 24px; font-weight: 600; letter-spacing: -0.02em; margin-top: 16px">{{p.name}}</b>
-<span style="font-size: 34px; font-weight: 600; letter-spacing: -0.02em; margin-top: 6px; white-space: nowrap">{{p.price}}</span>
-<div style="display: flex; flex-direction: column; gap: 11px; margin: 22px 0 24px">
-<sc-for list="{{p.items}}" as="it" hint-placeholder-count="4">
-<div style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 15px; line-height: 1.45"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 2px"><circle cx="12" cy="12" r="10" fill="#FFFFFF"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{it}}</span></div>
-</sc-for>
+<div style="background: {{p.bg}}; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; box-sizing: border-box">
+<span style="font-size: 15px; color: #45454A">{{p.tag}}</span>
+<b style="font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-top: 4px">{{p.name}}</b>
+<span style="display: flex; align-items: baseline; gap: 12px; margin-top: 18px; flex-wrap: wrap"><span style="font-size: 40px; font-weight: 600; letter-spacing: -0.03em; white-space: nowrap">{{p.price}}</span><s style="font-size: 18px; color: #6B6B70; white-space: nowrap">{{p.old}}</s></span>
+<span style="font-size: 14px; color: #45454A; margin-top: 4px">{{p.note}}</span>
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0 26px">
+<sc-for list="{{p.items}}" as="it" hint-placeholder-count="4"><div style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 16px; line-height: 1.45"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 3px"><circle cx="12" cy="12" r="10" fill="#FFFFFF"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{it}}</span></div></sc-for>
 </div>
-<a class="pick" href="https://t.me/jesuscurse" target="_blank" rel="noopener" style="margin-top: auto; display: flex; align-items: center; justify-content: center; height: 50px; border-radius: 25px; background: #FFFFFF; color: #111111; font: 600 15px Inter, sans-serif; cursor: pointer; transition: background .2s, color .2s">Выбрать</a>
+<a class="pick" href="https://t.me/jesuscurse" target="_blank" rel="noopener" style="margin-top: auto; display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 26px; background: #FFFFFF; color: #111111; font: 600 15px Inter, sans-serif">Выбрать</a>
 </div>
 </sc-for>
 </div>
@@ -106,35 +95,46 @@ body{background:#E6EDEF}
 </sc-if>
 
 <sc-if value="{{isLearn}}" hint-placeholder-val="{{ false }}">
-<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
-<button type="button" onClick="{{goHome}}" aria-label="На главную" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-<h1 style="margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -0.02em">Обучение</h1>
-<span style="font-size: 15px; color: #6B6B70">Онлайн, индивидуальные занятия</span>
-</div>
+<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap"><button type="button" onClick="{{goHome}}" aria-label="На главную" class="back" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div style="display: flex; flex-direction: column; gap: 2px"><h1 style="margin: 0; font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em">Обучение</h1><span style="font-size: 15px; color: #6B6B70">Индивидуальные онлайн-уроки по 60 минут</span></div></div>
 <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; flex: 1">
 <sc-for list="{{lessons}}" as="l" hint-placeholder-count="4">
-<div style="background: {{l.bg}}; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; box-sizing: border-box">
-<span style="align-self: flex-start; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 14px; background: #FFFFFF; font-size: 13px; font-weight: 500">{{l.term}}</span>
-<b style="font-size: 24px; font-weight: 600; letter-spacing: -0.02em; margin-top: 16px">{{l.name}}</b>
-<span style="font-size: 34px; font-weight: 600; letter-spacing: -0.02em; margin-top: auto; white-space: nowrap">{{l.price}}</span>
-<span style="font-size: 14px; color: #45454A; margin-top: 4px">{{l.per}}</span>
-<a class="pick" href="https://t.me/jesuscurse" target="_blank" rel="noopener" style="margin-top: 22px; display: flex; align-items: center; justify-content: center; height: 50px; border-radius: 25px; background: #FFFFFF; color: #111111; font: 600 15px Inter, sans-serif; cursor: pointer; transition: background .2s, color .2s">Выбрать</a>
+<div style="background: {{l.bg}}; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; box-sizing: border-box">
+<b style="font-size: 30px; font-weight: 600; letter-spacing: -0.025em">{{l.name}}</b>
+<span style="font-size: 16px; color: #45454A; margin-top: 4px">{{l.term}}</span>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 26px">
+<sc-for list="{{l.items}}" as="it" hint-placeholder-count="3"><div style="display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 16px; line-height: 1.45"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 3px"><circle cx="12" cy="12" r="10" fill="#FFFFFF"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{it}}</span></div></sc-for>
+</div>
+<span style="margin-top: auto; padding-top: 28px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap"><span style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; white-space: nowrap">{{l.price}}</span><s style="font-size: 18px; color: #6B6B70; white-space: nowrap">{{l.old}}</s></span>
+<span style="font-size: 15px; color: #45454A; margin: 2px 0 22px">{{l.per}}</span>
+<a class="pick" href="https://t.me/jesuscurse" target="_blank" rel="noopener" style="margin-top: auto; display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 26px; background: #FFFFFF; color: #111111; font: 600 15px Inter, sans-serif">Выбрать</a>
 </div>
 </sc-for>
 </div>
 </div>
 </sc-if>
 
-<sc-if value="{{isFaq}}" hint-placeholder-val="{{ false }}">
-<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 20px">
-<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
-<button type="button" onClick="{{goHome}}" aria-label="На главную" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-<h1 style="margin: 0 12px 0 0; font-size: 34px; font-weight: 600; letter-spacing: -0.02em">Вопросы</h1>
-<sc-for list="{{topics}}" as="c" hint-placeholder-count="3">
-<button type="button" class="{{c.cls}}" onClick="{{c.pick}}" style="display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border: 0; border-radius: 18px; font: 500 14px Inter, sans-serif; cursor: pointer; background: {{c.bg}}; color: {{c.fg}}"><sc-if value="{{c.on}}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#FFFFFF"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if>{{c.name}}</button>
-</sc-for>
+<sc-if value="{{isAbout}}" hint-placeholder-val="{{ false }}">
+<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap"><button type="button" onClick="{{goHome}}" aria-label="На главную" class="back" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div style="display: flex; flex-direction: column; gap: 2px"><h1 style="margin: 0; font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em">О нас</h1><span style="font-size: 15px; color: #6B6B70">Онлайн-школа китайского языка</span></div></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 14px; flex: 1">
+<div style="background: linear-gradient(165deg, #E3EEEC 0%, #EDF1F2 50%, #F5F5F6 100%); border-radius: 24px; padding: 36px; display: flex; flex-direction: column">
+<p style="margin: 0; font-size: 30px; line-height: 1.25; font-weight: 600; letter-spacing: -0.02em; max-width: 620px">Maomao School готовит к учёбе в Китае и на Тайване: язык, экзамены и поступление — в одной школе.</p>
+<p style="margin: 18px 0 0; font-size: 17px; line-height: 1.6; color: #45454A; max-width: 600px">Мы работаем онлайн с учениками из разных стран. Программа строится по уровням HSK, а каждый урок, задание и материал собраны в личном кабинете ученика.</p>
+<div style="margin-top: auto; padding-top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{facts}}" as="f" hint-placeholder-count="3"><div style="background: #FFFFFF; border-radius: 18px; padding: 18px 20px"><b style="display: block; font-size: 30px; font-weight: 600; letter-spacing: -0.03em">{{f.v}}</b><span style="font-size: 14px; color: #55595D">{{f.k}}</span></div></sc-for>
 </div>
+</div>
+<div style="display: grid; grid-template-rows: repeat(4, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{values}}" as="v" hint-placeholder-count="4"><div style="background: {{v.bg}}; border-radius: 20px; padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; gap: 4px"><b style="font-size: 19px; font-weight: 600">{{v.t}}</b><span style="font-size: 15px; line-height: 1.5; color: #45454A">{{v.d}}</span></div></sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isFaq}}" hint-placeholder-val="{{ false }}">
+<div class="scr" style="flex: 1; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap"><button type="button" onClick="{{goHome}}" aria-label="На главную" class="back" style="width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F2F2F3; cursor: pointer; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div style="display: flex; flex-direction: column; gap: 2px"><h1 style="margin: 0; font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em">Вопросы</h1><span style="font-size: 15px; color: #6B6B70">Коротко о главном</span></div><div style="margin-left: auto; display: flex; gap: 6px"><sc-for list="{{topics}}" as="c" hint-placeholder-count="2"><button type="button" class="{{c.cls}}" onClick="{{c.pick}}" style="height: 38px; padding: 0 18px; border: 0; border-radius: 19px; font: 500 14px Inter, sans-serif; background: {{c.bg}}; color: {{c.fg}}; cursor: pointer">{{c.name}}</button></sc-for></div></div>
 <div style="display: flex; flex-direction: column">
 <sc-for list="{{faq}}" as="q" hint-placeholder-count="4">
 <div style="border-bottom: 1px solid #EDEDEF; padding: 4px 0">
@@ -202,24 +202,37 @@ class Component extends DCLogic {
        ['Готовите ли вы к HSK и TOCFL?', 'Да. Разбираем формат экзамена, тренируем каждую часть — аудирование, чтение и письмо — и решаем пробные варианты. Подготовку можно совместить с поступлением: так вы получите сертификат как раз к подаче документов.'],
        ['Чем пакет выгоднее?', 'В пакете урок обходится дешевле: разовое занятие стоит 2 000 ₽, в пакете на 4 урока — 1 950 ₽ за урок, на 8 — 1 900 ₽, на 16 — 1 850 ₽. Пакет удобно брать на месяц или два с постоянным расписанием.']]
     ];
-    const names = ['Главная', 'Поступление', 'Обучение', 'Вопросы'];
+    const names = ['Поступление', 'Обучение', 'О нас', 'Вопросы'];
     return {
-      menu: names.map((name, i) => ({ name, icon: I[i], bg: s === i ? '#FFFFFF' : 'transparent', fg: s === i ? '#111111' : '#55595D', sh: s === i ? '0 4px 14px -8px rgba(0,0,0,.25)' : 'none', pick: go(i) })),
-      isHome: s === 0, isAdm: s === 1, isLearn: s === 2, isFaq: s === 3,
-      goHome: go(0), goAdm: go(1), goLearn: go(2), goFaq: go(3),
+      menu: names.map((name, i) => ({ name, bg: s === i + 1 ? '#FFFFFF' : 'transparent', fg: s === i + 1 ? '#111111' : '#55595D', sh: s === i + 1 ? '0 4px 14px -8px rgba(0,0,0,.25)' : 'none', pick: go(i + 1) })),
+      isAbout: s === 3,
+      tiles: [
+        { name: 'Поступление', sub: 'Университеты Китая и Тайваня — от выбора программы до зачисления', price: 'от 27 000 ₽', bg: '#E7E2FB', go: go(1) },
+        { name: 'Обучение', sub: 'Индивидуальные уроки китайского онлайн, от нуля до HSK 6', price: 'от 1 850 ₽ за урок', bg: '#D8F3E2', go: go(2) },
+        { name: 'О нас', sub: 'Чем мы занимаемся и во что верим', price: '', bg: '#FCE9CC', go: go(3) }
+      ],
+      facts: [{ v: '2024', k: 'год основания' }, { v: 'HSK 1–6', k: 'все уровни' }, { v: '2', k: 'страны поступления' }],
+      values: [
+        { t: 'Академичность', d: 'Программа по уровням HSK, проверенная методика и аккуратная работа с грамматикой.', bg: '#E7E2FB' },
+        { t: 'Индивидуально', d: 'Каждый урок — один на один, темп и цели подстраиваем под ученика.', bg: '#DCEBFB' },
+        { t: 'Честность', d: 'Называем реальные шансы на поступление и не продаём лишних услуг.', bg: '#D8F3E2' },
+        { t: 'Результат', d: 'Сертификат, письмо о зачислении и уверенный китайский к началу учёбы.', bg: '#FCE9CC' }
+      ],
+      isHome: s === 0, isAdm: s === 1, isLearn: s === 2, isFaq: s === 4,
+      goHome: go(0),
       countries: ['Китай', 'Тайвань'].map((name, i) => ({ name, ...tick((i === 1) === tw), pick: () => this.setState({ tw: i === 1 }) })),
       topics: ['Китай', 'Тайвань', 'Обучение'].map((name, i) => ({ name, ...tick(t === i), pick: () => this.setState({ t: i, q: -1 }) })),
       faq: FAQ[t].map(([q, a], i) => ({ q, a, open: this.state.q === i, bg: this.state.q === i ? '#F2F2F3' : 'transparent', fw: this.state.q === i ? 600 : 500, toggle: () => this.setState({ q: this.state.q === i ? -1 : i }) })),
       admission: [
         { name: 'Подача', tag: 'Дистанционно', p: 30000, bg: '#FCE9CC', items: ['Консультация и разбор вашего случая', 'Подбор программы и университетов', 'Подготовка и подача документов'] },
         { name: 'Под ключ', tag: 'Дистанционно', p: 60000, bg: '#E7E2FB', items: ['Всё из «Подачи»', 'Стипендия и переписка с университетом', 'Виза и медосмотр', 'Ведём до зачисления, без выезда'] },
-        { name: 'Личное сопровождение', tag: 'С выездом ' + where, p: 90000, bg: '#D8F3E2', items: ['Всё из «Под ключ»', 'Приезжаем к вам на место', 'Все процедуры проходим вместе с вами', 'Заселение и первые дни на учёбе'] }
-      ].map(x => ({ name: x.name, tag: x.tag, bg: x.bg, items: x.items, price: fmt(Math.round(x.p * (tw ? 1.2 : 1))) })),
+        { name: 'Личное сопровождение', tag: 'С нашим выездом ' + where, p: 90000, bg: '#D8F3E2', items: ['Всё из «Под ключ»', 'Приезжаем к вам на место', 'Все процедуры проходим вместе с вами', 'Заселение и первые дни на учёбе'] }
+      ].map(x => { const full = Math.round(x.p * (tw ? 1.2 : 1)); return { name: x.name, tag: x.tag, bg: x.bg, items: x.items, old: fmt(full), price: fmt(Math.round(full * 0.9 / 100) * 100), note: 'для учеников школы −10%' }; }),
       lessons: [
-        { name: '1 урок', term: 'Разовое занятие', price: '2 000 ₽', per: '60 минут', bg: '#FCE9CC' },
-        { name: '4 урока', term: 'На месяц', price: '7 800 ₽', per: '1 950 ₽ за урок', bg: '#E7E2FB' },
-        { name: '8 уроков', term: 'На месяц', price: '15 200 ₽', per: '1 900 ₽ за урок', bg: '#DCEBFB' },
-        { name: '16 уроков', term: 'На 2 месяца', price: '29 600 ₽', per: '1 850 ₽ за урок', bg: '#D8F3E2' }
+        { name: '1 урок', term: 'Пробное или разовое', price: '2 000 ₽', old: '', per: '60 минут', items: ['Определяем уровень', 'Составляем план'], bg: '#FCE9CC' },
+        { name: '4 урока', term: 'На месяц', price: '7 800 ₽', old: '8 000 ₽', per: '1 950 ₽ за урок', items: ['Раз в неделю', 'Задания в кабинете'], bg: '#E7E2FB' },
+        { name: '8 уроков', term: 'На месяц', price: '15 200 ₽', old: '16 000 ₽', per: '1 900 ₽ за урок', items: ['Дважды в неделю', 'Задания в кабинете'], bg: '#DCEBFB' },
+        { name: '16 уроков', term: 'На 2 месяца', price: '29 600 ₽', old: '32 000 ₽', per: '1 850 ₽ за урок', items: ['Дважды в неделю', 'Подготовка к HSK'], bg: '#D8F3E2' }
       ]
     };
   }
